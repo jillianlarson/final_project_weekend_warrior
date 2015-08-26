@@ -1,0 +1,62 @@
+
+<h2><%= @location.name %></h2>
+<h3>
+      <% if current_user.locations.include?(@location) %>
+    <% favorite = current_user.favorites.find_by(:location_id => @location.id) %>
+    <a href="/delete_favorite/<%= favorite.id %>" class="btn btn-danger" rel="nofollow"><i class="fa fa-trash"></i></a>
+    <% else %>
+    <form action="/create_favorite" method="post">
+    <!-- Hidden input for authenticity token to protect from forgery -->
+    <input name="authenticity_token" type="hidden"
+    value="<%= form_authenticity_token %>">
+
+    <!-- Label and input for user_id -->
+    <input name="user_id" type="hidden" value="<%= current_user.id %>">
+
+    <!-- Label and input for movie_id -->
+    <input name="location_id" type="hidden" value="<%= @location.id %>">
+
+  <button class="btn btn-success">
+    <i class="fa fa-star"></i>
+  </button>
+
+  </form>
+  <% end %>
+  </h3>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+
+      <dt>Address</dt>
+      <dd><%= @location.address %></dd>
+
+      <dt>Description</dt>
+      <dd><%= @location.description %></dd>
+
+      <dt>Image</dt>
+      <dd><img src="<%= @location.image_url %>" width = 400</dd>
+
+      <dt>Favorited by:</dt>
+      <dd>
+        <ul class="list-group">
+        <% @location.favorites.each do |favorite| %>
+        <li class="list-group-item">
+        <a href="/users/<%= favorite.user_id %>" class="btn btn-success">
+        <%= favorite.user.username %></a>
+          </li>
+        <% end %>
+       </ul>
+      </dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/locations" class="btn btn-primary"><i class="fa fa-reply fa-2x"></i> Back
+      </a>
+      <a href="/locations/<%= @location.id %>/edit" class="btn btn-warning"><i class="fa fa-pencil fa-2x"></i>
+        Edit
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class = "jumbotron"><h1>Weekend Warrior <i class="fa fa-star"></i> <i class="fa fa-users"></i> <i class="fa fa-car"></i></h1></div>
+<h2><font color="purple">where you can
+  <ul>
+    <li>save locations in your "roadtrip bucket list" by adding them to your favorites <i class="fa fa-star"></i></li>
+    <li>view the favorites of others <i class="fa fa-users"></i></li>
+    <li>& plan weekend getaways by viewing the lengths of your favorited trips <i class="fa fa-car"></i></li>
+  </ul>
+</font>
+</h2>
+<tr>
+
+ <td><a href="/locations/new" class="btn btn-lg btn-warning"><i class ="fa fa-map-marker fa-2x"></i> New Location</a></td>
+
+ <td><a href="/locations/" class="btn btn-lg btn-success"><i class ="fa fa-map fa-2x"></i> View All Locations</a></td>
+
+  <td><a href="/users/<%=current_user.id%>" class="btn btn-lg btn-info"><i class="fa fa-flag-checkered fa-2x"></i> View My Favorites and Make Me a Weekend Warrior</a></td>
+</tr>
+

@@ -1,0 +1,35 @@
+<div class="page-header">
+  <h3><%= @user.username %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Email</dt>
+      <dd><%= @user.email %></dd>
+
+      <dt>Address</dt>
+      <dd><%= @user.address %></dd>
+
+      <dt>User Favorites</dt>
+      <dd>
+        <ul class="list-group">
+        <% @user.favorites.each do |favorite| %>
+          <li class="list-group-item">
+            <%= favorite.location.name %>
+          </li>
+        <% end %>
+       </ul>
+      </dd>
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/users" class="btn btn-primary"> <i class="fa fa-reply fa-2x"></i> Back
+      </a>
+
+      <a href="/warrior/<%= @user.id %>" class="btn btn-success"> <i class="fa fa-flag-checkered fa-2x"></i> Weekend Warrior
+      </a>
+
+    </div>
+  </div>
+</div>
